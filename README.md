@@ -1,3 +1,5 @@
+🇧🇷 Português | 🇺🇸 [English](README.en.md)
+
 # Prática de SQL
 
 Consultas e exercícios que escrevi durante o curso **"Aprenda SQL – Primeiras Magias na Linguagem dos Dados"**, do canal [Téo Me Why](https://youtube.com/playlist?list=PLvlkVRRKOYFRo651oD0JptVqfQGDvMi3j). Todo o código roda em SQLite, sobre uma base de clientes, transações e produtos de um programa de pontos.
