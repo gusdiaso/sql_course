@@ -1,33 +1,48 @@
-# 🚀 Consolidação de Conhecimento em SQL
+# Prática de SQL
 
-Este repositório é dedicado à consolidação e prática da linguagem SQL (Structured Query Language), que aprendi através do excelente conteúdo disponibilizado gratuitamente.
+Consultas e exercícios que escrevi durante o curso **"Aprenda SQL – Primeiras Magias na Linguagem dos Dados"**, do canal [Téo Me Why](https://youtube.com/playlist?list=PLvlkVRRKOYFRo651oD0JptVqfQGDvMi3j). Todo o código roda em SQLite, sobre uma base de clientes, transações e produtos de um programa de pontos.
 
----
+## Conteúdo
 
-## 🤝 Agradecimento e Créditos
+| Pasta/arquivos | Tópicos |
+|---|---|
+| `01_select.sql` … `13_join.sql` | `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `CASE WHEN`, `COUNT`, `COUNT DISTINCT`, `SUM`, estatísticas (`AVG`, `MIN`, `MAX`), `GROUP BY`, `JOIN` |
+| `exercicios/` | Exercícios de `WHERE`, `GROUP BY` e `CASE` com a base do curso |
+| `bora_praticar/` | Prática extra de `WHERE` e `JOIN` |
+| `data/` | Base de dados (`database.db`) e os CSVs de origem: clientes, produtos, transações e itens por transação |
 
-Este projeto de estudo e todo o conhecimento em SQL aqui aplicado são fruto do curso **"Aprenda SQL - Primeiras Magias na Linguagem dos Dados"** do canal **Téo Me Why**.
+## Exemplo
 
-Expresso meu profundo agradecimento pela didática clara e pela abordagem completa que possibilitou esta jornada de aprendizado.
+Segmentação de clientes por pontos com `CASE WHEN` ([`07_case.sql`](./07_case.sql)):
 
----
+```sql
+SELECT idCliente,
+       qtdePontos,
+       CASE
+           WHEN qtdePontos <= 500   THEN 'Ponei'
+           WHEN qtdePontos <= 1000  THEN 'Ponei Premium'
+           WHEN qtdePontos <= 5000  THEN 'Mago Aprendiz'
+           WHEN qtdePontos <= 10000 THEN 'Mago Mestre'
+           ELSE 'Mago Supremo'
+       END AS CategoriaCliente
+FROM clientes
+ORDER BY qtdePontos DESC;
+```
 
-## 🧠 Tópicos Chave Dominados
+## Como executar
 
-O curso ofereceu uma visão abrangente do SQL, cobrindo tanto a manipulação de dados quanto conceitos avançados, essenciais para qualquer profissional de dados.
+```bash
+git clone https://github.com/gusdiaso/sql_course.git
+cd sql_course
+sqlite3 data/database.db < 07_case.sql
+```
 
-Os principais pilares de conhecimento desenvolvidos incluem:
+Também funciona abrindo `data/database.db` no DBeaver ou no DB Browser for SQLite.
 
-1.  **Consultas Básicas (`SELECT` e `FROM`):** Fundamentos para recuperar e projetar dados de tabelas.
-2.  **Filtragem e Organização:** Uso de cláusulas **`WHERE`**, operadores lógicos e **`ORDER BY`** para refinar e classificar resultados.
-3.  **Agregação e Resumo:** Utilização de funções agregadas (**`COUNT`**, **`SUM`**, **`AVG`**, etc.) e o agrupamento de dados com **`GROUP BY`**.
-4.  **Cruzamento de Dados (JOINs):** Técnicas essenciais para combinar informações de múltiplas tabelas (ex: `INNER JOIN`, `LEFT JOIN`).
-5.  **Subqueries e CTEs (`WITH`):** Construção de consultas aninhadas e uso de **Common Table Expressions (CTEs)** para otimizar a leitura e a performance de códigos complexos.
-6.  **Window Functions (Funções de Janela):** Uso de funções como **`ROW_NUMBER()`**, **`RANK()`** e outras para realizar cálculos em um conjunto específico (janela) de linhas.
-7.  **Linguagem de Definição e Manipulação:** Compreensão da diferença entre **DDL** (Data Definition Language - criar, alterar, excluir estrutura) e **DML** (Data Manipulation Language - inserir, atualizar, excluir dados).
+## Créditos
 
----
+Conteúdo e base de dados do curso do canal **Téo Me Why**. Os arquivos deste repositório são a minha prática.
 
-### Link de Referência
+## Autor
 
--   **Curso Original:** [Aprenda SQL - Primeiras Magias na Linguagem dos Dados (Playlist)](https://youtube.com/playlist?list=PLvlkVRRKOYFRo651oD0JptVqfQGDvMi3j&si=TCTnLo3d-wGkNjZR)
+Gustavo Dias de Oliveira · [LinkedIn](https://www.linkedin.com/in/gusdiaso/)
